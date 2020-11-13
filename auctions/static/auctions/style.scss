@@ -1,0 +1,176 @@
+$card_shadow:
+0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$theme_color: #f8eb53;
+$hover_theme_color: #f2d740;
+$background-color: rgb(255, 255, 255);
+$dark_grey:rgb(64, 64, 64);
+$light_grey: rgb(153, 153, 153);
+
+
+
+a:hover {
+    text-decoration-line: none;
+}
+
+body {
+    background-color: $background-color;
+
+    nav {
+        background-color: $theme_color;
+        box-shadow: 0px 1px 2px rgb(209, 209, 209);
+        // border-bottom: 1px solid rgb(209, 209, 209);
+
+        .nav-link {
+            color: $light_grey;
+            font-weight: 600;
+
+            &:hover {
+                color:$dark_grey;
+                font-weight: 600;
+
+            }
+        }
+
+        .btn-nav {
+            outline: none;
+            color: $dark_grey;
+
+            &:hover {
+                border: 0.5px solid $light_grey;
+                border-radius: 2px;
+            }
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 20px;
+        }
+
+    }
+    main {
+    width:80%;
+    margin:auto;
+        .btn-outline-secondary {
+            margin-top: 8px;
+            &:hover{
+                background-color: $theme_color;
+                color: $dark_grey;
+    
+            }
+
+            &:not(:disabled):not(.disabled):active {
+                background-color: $hover_theme_color;
+                color: black;
+            }
+        }
+        .btn-outline-secondary.dropdown-toggle:focus {
+
+            background-color:$hover_theme_color;
+            color:$dark_grey
+        }
+
+        h2 .dropdown {
+            float: right;
+
+        }
+        .card {
+            img {
+                padding: 1px;
+            }
+
+            .card-title a{
+                margin-bottom: 50px;
+                color: $light_grey;
+                &:hover {
+                    color: $dark_grey;
+                }
+            }
+            .card-text-group {
+                position: absolute;
+                bottom: 8px;
+            
+            }
+            .card-text-group-2 {
+                position: absolute;
+                bottom: 16%;
+            
+            }
+            .card-footer {
+                background-color: $theme_color;
+            
+                .footer-text {
+                    color: $light_grey;
+                    font-weight: bold;
+                    &:hover {
+                        color:$dark_grey;
+                        font-weight: bolder;
+                    }
+                }
+            }
+
+            &:hover {
+                box-shadow: $card_shadow;
+                transition: 0.5s;
+            }
+
+
+        }
+        
+        .btn-place-bid {
+            background-color: $theme_color;
+            &:hover {
+                background-color: $hover_theme_color;
+                box-shadow: $card_shadow;
+            }
+        }
+    }
+    .container {
+        word-wrap: break-word;
+    }
+    .footer-text {
+        color: grey;
+        text-align: center;
+        font-weight: 600;
+        margin: 0 auto;
+        padding: 0;
+  
+    }
+
+    i {
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+
+    
+    .container {
+        word-wrap: break-word;
+    }
+    h2 .dropdown {
+        float: none;
+        width: 100%;
+    }
+
+    .w-50 {
+        width: 100%!important;
+    }
+
+    .btn-outline-secondary {
+        width: 80vw;
+    }
+
+    .ml-3,.ml-1 {
+        margin-left: 0px!important;
+    }
+
+    div>.btn-category{
+        width: 100%;
+    }
+    .btn-comment {
+        width: 100%;
+    }
+
+
+}

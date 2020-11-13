@@ -1,0 +1,128 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container">
+    {% if listings %}
+      <h2 class="pt-2 my-4">
+        {% if active %}
+        Active Listings
+        {% elif all %}
+        All Listings
+        {% elif my %}
+        Your Listings
+        {% elif watch %}
+        Your Watch Listings
+        {% endif %}
+        
+        {% if category %}
+        {{category.name}}
+        {% endif %}
+        {% if active or all or category %}
+        <div class="dropdown">
+          <button type="button" class="btn btn-outline-secondary btn-category dropdown-toggle" data-toggle="dropdown">
+            Category Filter
+          </button>
+          <div class="dropdown-menu">
+              {% for c in all_categories %}
+            <a class="dropdown-item" href="{% url 'category' c.id %}">{{c.name}}</a>
+              {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </h2>
+      <div class="row">
+          {% for list in listings %}
+          <div class="col-lg-3 col-md-4 col-sm-12 card-group p-2">
+            
+            <div class ="bg-light card mb-3 d-flex flex-wrap align-items-stretch">
+              <a href="{% url 'product' list.id %}">
+                <img class="card-img-top" src="{{list.img_url}}">
+              
+                <div class="card-body mb-2">
+                  <h6 class="card-title mb-5"><a href="{% url 'product' list.id %}">{{ list.title }}</a></h6>
+                  {% if active %}
+                  <div class="card-text-group">
+                  <span>Start Price: ${{ list.start_price }}</span><br>                
+                  {% if list.listingbid.last.bid_price %}
+                  Now: <span class="badge badge-pill badge-danger">${{list.listingbid.last.bid_price}}</span>
+                  {% else %}
+                  <span class="text-success">Under Offer</span>
+                  {% endif %}
+                  </div>
+                  {% endif %}
+
+                  {% if all or category%}
+                  <div class="card-text-group">
+                  Highest Bid: <span class="badge badge-pill badge-danger">$
+                  {% if list.listingbid.last.bid_price %}
+                  {{ list.listingbid.last.bid_price }}
+                  {% else %}
+                  {{ list.start_price }}
+                  {% endif %}</span><br>
+                  {% if not list.is_active %}
+                  <span class="text-danger">Already Closed</span>
+                  {% else %}
+                  <span class="text-success">Under Offer</span>
+                  {% endif %}
+                  </div>
+                  {% endif %}
+
+                  {% if watch %}
+                  <div class="card-text-group-2">
+                  Highest Bid: <span class="badge badge-pill badge-danger">$
+                    {% if list.listingbid.last.bid_price %}
+                    {{ list.listingbid.last.bid_price }}
+                    {% else %}
+                    {{ list.start_price }}
+                    {% endif %}</span><br>
+                  {% if not list.is_active %}
+                  <span class="text-danger">Already Closed</span>
+                  {% else %}
+                  Under Offer
+                  {% endif %}
+                  </div>
+                  {% endif %}
+                 
+                  {% if my %}
+                  <div class="card-text-group-2">
+                  <span class="text-start">Start Price: $ {{ list.start_price }}</span><br>
+                  Highest Bid: <span class="badge badge-pill badge-danger">$
+                      {% if list.listingbid.last.bid_price %}
+                      {{ list.listingbid.last.bid_price }}
+                      {% else %}
+                      {{ list.start_price }}
+                      {% endif %}</span><br>
+                  </div>
+                  {% endif %}
+                
+                </div>
+                </a>
+                <!-- Attach card footer to card body for watchlist and mylist page  -->
+                <!-- card footer allow user to close listing if owner -->
+                <!-- card footer allow user to stop watching if is watching-->
+                {% if my %}
+                <div class="card-footer text-center">
+                  {% if list.is_active %}
+                    <a class="footer-text" href="{% url 'close_listing' list.title list.id %}">Click to Close</a>
+                  {% else %}
+                  <span class="footer-text">Closed</span>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                {% if watch %}
+                <div class="card-footer text-center">
+                  <a class="footer-text" href="{% url 'stop_watch' list.id %}">Stop Watching</a>
+                </div>
+                {% endif %}
+                </div> 
+              
+          </div>  
+          {% endfor %}
+          
+    {% else %}
+    NO Listings Yet
+    {% endif %}
+      
+</div>
+{% endblock %}

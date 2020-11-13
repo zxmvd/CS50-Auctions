@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if won_listings %}
+    <h2 class="pt-3 my-3 col-lg-8">Congratulations!</h2><br>
+    {% for list in won_listings %}
+    <a href="{% url 'product' list.id %}"><h5 class="alert alert-success">
+        You won {{ list.title }} at $ {{ list.listingbid.last.bid_price }} on 
+        {{ list.listingbid.last.time.date }} - Check It Out!</h5></a><br>
+    {% endfor %}
+    {% else %}
+    NO Won any Listing Yet
+    {% endif %}
+{% endblock %}

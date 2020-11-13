@@ -1,0 +1,146 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+    {% if messages %}
+    {% for message in messages %}   
+    <br><br>
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- display the listing details -->
+    {% if listing %}
+    <h3 class="pt-3 my-3">{{listing.title}}
+        
+    <!-- category dropdown menu -->
+
+    </h3>
+    <hr>
+    <div class="row"> 
+        <div class="col-md-5">
+            <img src="{{listing.img_url}}" class="w-100"><br>
+        </div>
+        <div class="col-md-7">
+
+
+
+            
+                <div class="ml-3">
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#demo">View Bids</button>
+                    {% if user.is_authenticated %}
+                    {% if is_watching %}
+                    <a class="btn btn-outline-secondary ml-1" href="{% url 'stop_watch' listing.id %}">Stop Watching</a>
+                    {% else %}
+                    <a class="btn btn-outline-secondary ml-1" href="{% url 'add_watch' listing.id %}">add to watchlist</a>
+                    
+                    {% endif %}
+                    {% endif %}
+                    {% if owner and listing.is_active%}
+                    <a class="btn btn-outline-secondary ml-1" 
+                    href="{% url 'close_listing' list_title=listing.title listing_id=listing.id %}">
+                    Close This Listing</a>
+                    {% endif %}
+                    <!-- <div class="dropdown"> -->
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle ml-1" data-toggle="dropdown">
+                          Goto Category
+                        </button>
+                        <div class="dropdown-menu">
+                            {% for c in all_categories %}
+                            <a class="dropdown-item" href="{% url 'category' c.id %}">{{c.name}}</a>
+                            {% endfor %}
+                        <!-- </div> -->
+                    </div>
+                    <br><br>
+                    <div id="demo" class="collapse list-group list-group-flush">
+                            {% if bids %}
+                            {% for bid in bids %}
+                            <li class="list-group-item flex-column">{{ bid.bidder }} bidded ${{ bid.bid_price }} on {{ bid.time.date }}</li>
+                            {% endfor %}
+                            {% else %}
+                            NO Bids yet<br>
+                            {% endif %}
+                    </div>
+                    <br>
+                    
+                    Start Price: $ {{listing.start_price}}<br>
+                    SKU:000{{listing.id}}<br>
+                    {% if bids %}
+                    Highest Bid: <span class="badge badge-danger">${{bids.last.bid_price}}</span> by {{bids.last.bidder}}
+                    {% endif %}
+                    {% if listing.is_active %}
+                </div><hr>
+
+
+                {% if user.is_authenticated %}
+                <form class="ml-3 justify-content-center" action="{% url 'place_bid' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3 w-50">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">$</label>
+                        </div>
+                        <input type="number" class="form-control" name="NewBid" placeholder="Your Bid" required>
+                        <div class="input-group-append">
+                            <label class="input-group-text" for="inputGroupSelect01">.00</label>
+                        </div> 
+                    </div>
+                    <input type="submit" class="btn btn-place-bid col-sm-6" value="Place Bid">
+                </form>
+                {% else %}
+                <div class="ml-3">
+                    <p3>Please <a href="{% url 'login' %}">Log In</a> to Bid</p3><br><br>
+                    <input type="submit" class="btn btn-place-bid" value="Place Bid" disabled>
+                </div>
+                {% endif %}
+                    {% elif winning_bid %}
+                    <div>
+                        <hr>
+                        <h4>This Listing is Closed for Bidding!</h4>
+                        <h4><strong>{{ winning_bid.bidder }}</strong> Won the Bidding at $ {{ winning_bid.bid_price }}</h4>
+                        <hr>
+                    </div>
+
+                    {% endif %}
+        </div>
+
+
+   
+    </div>
+
+    <div class="container col-md-12 mt-3">
+        <h3>Product Descrption</h3>
+        <p>{{listing.description}}</p>
+        <hr>
+        {% if comments %}
+        {% for comment in comments %}
+        Commented by {{comment.commenter}} on {{comment.time.date}}:
+        <p>{{comment.content}}</p>
+        {% endfor %}
+        {% endif %}
+    
+            {% if user.is_authenticated %}
+    <div class=""> 
+        Make Comments on This Product:  <br>
+        <form class="form-group" action="{% url 'add_comment' %}" method="post">
+            {% csrf_token %}
+            <textarea class="form-control" name="content" rows="5" cols="80" required>Eget duis at tellus at urna.</textarea>
+            <input type="hidden" name="listing_id" value="{{listing.id}}"><br>
+            <input class="btn btn-comment btn-outline-secondary" type="submit" value="Comment">
+        </form>
+        {% else %}
+        <div>
+            <p>You have to <a href="{% url 'login' %}">Log In</a> to Make A Comment</p><input class="btn btn-comment btn-outline-secondary" type="submit" value="Comment" disabled>
+        </div>
+        {% endif %}
+    </div>
+</div>
+    
+
+    {% else %}
+    NO Listings Yet
+    {% endif %}
+
+
+
+{% endblock %}

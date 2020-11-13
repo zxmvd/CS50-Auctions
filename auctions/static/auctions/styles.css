@@ -1,0 +1,139 @@
+a:hover {
+  text-decoration-line: none;
+}
+
+body {
+  background-color: white;
+}
+body nav {
+  background-color: #f8eb53;
+  box-shadow: 0px 1px 2px #d1d1d1;
+}
+body nav .nav-link {
+  color: #999999;
+  font-weight: 600;
+}
+body nav .nav-link:hover {
+  color: #404040;
+  font-weight: 600;
+}
+body nav .btn-nav {
+  outline: none;
+  color: #404040;
+}
+body nav .btn-nav:hover {
+  border: 0.5px solid #999999;
+  border-radius: 2px;
+}
+body nav .nav-right {
+  position: absolute;
+  right: 20px;
+}
+body main {
+  width: 80%;
+  margin: auto;
+}
+body main .btn-outline-secondary {
+  margin-top: 8px;
+}
+body main .btn-outline-secondary:hover {
+  background-color: #f8eb53;
+  color: #404040;
+}
+body main .btn-outline-secondary:not(:disabled):not(.disabled):active {
+  background-color: #f2d740;
+  color: black;
+}
+body main .btn-outline-secondary.dropdown-toggle:focus {
+  background-color: #f2d740;
+  color: #404040;
+}
+body main h2 .dropdown {
+  float: right;
+}
+body main .card img {
+  padding: 1px;
+}
+body main .card .card-title a {
+  margin-bottom: 50px;
+  color: #999999;
+}
+body main .card .card-title a:hover {
+  color: #404040;
+}
+body main .card .card-text-group {
+  position: absolute;
+  bottom: 8px;
+}
+body main .card .card-text-group-2 {
+  position: absolute;
+  bottom: 16%;
+}
+body main .card .card-footer {
+  background-color: #f8eb53;
+}
+body main .card .card-footer .footer-text {
+  color: #999999;
+  font-weight: bold;
+}
+body main .card .card-footer .footer-text:hover {
+  color: #404040;
+  font-weight: bolder;
+}
+body main .card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.5s;
+}
+body main .btn-place-bid {
+  background-color: #f8eb53;
+}
+body main .btn-place-bid:hover {
+  background-color: #f2d740;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+body .container {
+  word-wrap: break-word;
+}
+body .footer-text {
+  color: grey;
+  text-align: center;
+  font-weight: 600;
+  margin: 0 auto;
+  padding: 0;
+}
+body i {
+  float: right;
+}
+
+@media only screen and (max-width: 780px) {
+  .container {
+    word-wrap: break-word;
+  }
+
+  h2 .dropdown {
+    float: none;
+    width: 100%;
+  }
+
+  .w-50 {
+    width: 100% !important;
+  }
+
+  .btn-outline-secondary {
+    width: 80vw;
+  }
+
+  .ml-3, .ml-1 {
+    margin-left: 0px !important;
+  }
+
+  div > .btn-category {
+    width: 100%;
+  }
+
+  .btn-comment {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

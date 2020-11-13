@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<div class="row justify-content-center">
+    <h2 class="pt-3 my-3 col-lg-8">Create your Listing</h2>
+    <div class="form-group col-lg-8">
+        <form action="{% url 'create_listing' %}" method="post">
+            {% csrf_token %}
+
+            {{ create_listing_form}}
+
+            <input type="submit" class="my-3 btn btn-block btn-place-bid" value="Create"/>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock %}
