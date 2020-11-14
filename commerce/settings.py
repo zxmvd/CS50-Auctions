@@ -124,6 +124,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/auctions'
 
-DATABASES['default'] =  dj_database_url.config()
-
 django_heroku.settings(locals())
