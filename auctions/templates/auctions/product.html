@@ -1,5 +1,12 @@
 {% extends "auctions/layout.html" %}
 
+{% block title %}
+{% if listing %}
+{{listing.title}}
+{% endif %}
+{% endblock %}
+
+
 {% block body %}
     
     {% if messages %}
