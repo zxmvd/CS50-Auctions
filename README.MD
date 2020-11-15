@@ -1,8 +1,8 @@
-This Django project is an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
-<a href="https://mini-auctions.herokuapp.com/" target="_blank">Live Demo</a>
-User: abc
-Pwd: 123
-
+This Django project is an <strong>eBay-like e-commerce auction site</strong> that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
+<a href="https://mini-auctions.herokuapp.com/" target="_blank">Live Demo</a><br>
+User: abc<br>
+Pwd: 123<br>
+<hr>
 
 * Create Listing: Users will be able to visit a page to create a new listing. 
 * Active Listings Page: The default route of the web application, will let users view all of the currently active auction listings.
@@ -15,7 +15,7 @@ Pwd: 123
 * Watchlist: Users who are signed in can visit a Watchlist page.
 * Categories: Users can visit a page showing all listings of a selected category. 
 
-
+<hr>
 
  - In auctions/models.py are Django Modeles and its fields.
  - In auctions/urls.py is the URL configuration for this app is defined.
