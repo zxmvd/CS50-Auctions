@@ -3,7 +3,7 @@ This Django project is an <strong>eBay-like e-commerce auction site</strong> tha
 <a href="https://mini-auctions.herokuapp.com/" target="_blank"><strong>Live Demo</strong></a><br>
 User: abc<br>
 Pwd: 123<br><br>
-<a href="#"><img src="staticfiles/screenshot.png" width="900"></a>
+<a href="https://mini-auctions.herokuapp.com/product/2"><img src="staticfiles/screenshot.png" width="900"></a>
 <hr>
 
 * Create Listing: Users will be able to visit a page to create a new listing. 
