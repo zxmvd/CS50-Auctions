@@ -47,7 +47,7 @@
                   {% if list.listingbid.last.bid_price %}
                   Now: <span class="badge badge-pill badge-danger">${{list.listingbid.last.bid_price}}</span>
                   {% else %}
-                  <span class="text-success">Under Offer</span>
+                  <span class="text-success">No Bids Yet</span>
                   {% endif %}
                   </div>
                   {% endif %}
@@ -63,7 +63,7 @@
                   {% if not list.is_active %}
                   <span class="text-danger">Already Closed</span>
                   {% else %}
-                  <span class="text-success">Under Offer</span>
+                  <span class="text-success">On Offer</span>
                   {% endif %}
                   </div>
                   {% endif %}
@@ -79,7 +79,7 @@
                   {% if not list.is_active %}
                   <span class="text-danger">Already Closed</span>
                   {% else %}
-                  Under Offer
+                  <span class="text-success">On Offer</span>
                   {% endif %}
                   </div>
                   {% endif %}
