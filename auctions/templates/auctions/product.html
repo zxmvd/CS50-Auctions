@@ -63,7 +63,7 @@
                     <div id="demo" class="collapse list-group list-group-flush">
                             {% if bids %}
                             {% for bid in bids %}
-                            <li class="list-group-item flex-column">{{ bid.bidder }} bidded ${{ bid.bid_price }} on {{ bid.time.date }}</li>
+                            <li class="list-group-item flex-column">{{ bid.bidder }} bid ${{ bid.bid_price }} on {{ bid.time.date }}</li>
                             {% endfor %}
                             {% else %}
                             NO Bids yet<br>
