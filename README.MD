@@ -7,7 +7,7 @@ Pwd: 123<br>
 - In <a href="auctions/urls.py">auctions/urls.py</a>, the URL configuration for this app is defined.
 - In <a href="auctions/views.py">auctions/views.py</a> functions will return results to the web browser.
 - In <a href="auctions/templates/auctions">auctions/templates/auctions/</a> are templates inheriting from a base layout.html file.
-- CSS is in <a href="auctions/static/auctions/style.scssy">auctions/static/auctions/</a>.
+- CSS is in <a href="auctions/static/auctions/style.scss">auctions/static/auctions/</a>.
 <hr>
 <a href="https://mini-auctions.herokuapp.com/product/2"><img src="staticfiles/screenshot.png" width="900"></a>
 <hr>
