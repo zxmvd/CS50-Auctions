@@ -3,6 +3,13 @@ This Django project is an <strong>eBay-like e-commerce auction site</strong> tha
 <a href="https://mini-auctions.herokuapp.com" target="_blank"><strong>Live Demo</strong></a><br>
 User: abc<br>
 Pwd: 123<br><br>
+<hr>
+
+ - In <a href="auctions/models.py">auctions/models.py</a> are Django Modeles and its fields.
+ - In <a href="auctions/urls.py">auctions/urls.py</a>, the URL configuration for this app is defined.
+ - In <a href="auctions/views.py">auctions/views.py</a> functions will return results to the web browser.
+ - In <a href="auctions/templates/auctions">auctions/templates/auctions/</a> are templates inheriting from a base layout.html file.
+ - CSS is in <a href="auctions/static/auctions/style.scssy">auctions/static/auctions/</a>.
 <a href="https://mini-auctions.herokuapp.com/product/2"><img src="staticfiles/screenshot.png" width="900"></a>
 <hr>
 
@@ -17,10 +24,4 @@ Pwd: 123<br><br>
 * Watchlist: Users who are signed in can visit a Watchlist page.
 * Categories: Users can visit a page showing all listings of a selected category. 
 
-<hr>
 
- - In auctions/models.py are Django Modeles and its fields.
- - In auctions/urls.py is the URL configuration for this app is defined.
- - In auctions/views.py functions will return results to the web browser.
- - In auctions/templates/auctions/ are templates inheriting from a base layout.html file.
- - CSS is in auctions/static/auctons/.
