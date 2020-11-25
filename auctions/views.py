@@ -40,8 +40,19 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, "auctions/login.html")
-    # return HttpResponseRedirect(reverse("index"))
 
+def demo(request):
+
+    user = authenticate(request, username="abc", password="123")
+    # Check if authentication successful
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "auctions/login.html", {
+            "message": "Invalid username and/or password."
+        })
+	
 
 def register(request):
     if request.method == "POST":
