@@ -170,7 +170,6 @@ def won_listings(request):
             wonbidprice = listing.listingbid.last().bid_price
             won_listing.append(listing)
             won_price.append(wonbidprice)
-		else continue
     return render(request, "auctions/won_listings.html", {"won_listings" : won_listing, 
                 "won_price": won_price})
 
