@@ -164,12 +164,13 @@ def stopwatch(request, list_id):
 def won_listings(request):
     won_listing = []
     won_price = []
-    closed_listings = Listing.objects.filter(is_active=False)
+    closed_listings = Listing.objects.filter(is_active=False).exclude(listingbid=None)
     for listing in closed_listings:
-        if listing.listingbid is not None and listing.listingbid.last().bidder == request.user:
+        if listing.listingbid.last().bidder == request.user:
             wonbidprice = listing.listingbid.last().bid_price
             won_listing.append(listing)
             won_price.append(wonbidprice)
+		else continue
     return render(request, "auctions/won_listings.html", {"won_listings" : won_listing, 
                 "won_price": won_price})
 

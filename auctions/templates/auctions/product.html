@@ -107,6 +107,13 @@
                         <h4><strong>{{ winning_bid.bidder }}</strong> Won the Bidding at $ {{ winning_bid.bid_price }}</h4>
                         <hr>
                     </div>
+					{% elif winning_bid is none %}
+					<div>
+                        <hr>
+                        <h4>This Listing is Closed for Bidding!</h4>
+                        <h4>without bids and winner. </h4>
+                        <hr>
+                    </div>
 
                     {% endif %}
         </div>
